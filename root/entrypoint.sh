@@ -13,7 +13,7 @@ function start_segmenter() {
 }
 
 function start_chunk_web_server() {
-    cd webserver
+    cd ../webserver
     echo "starting chunk web server..."
     node index.js -p 5000 -d /media -a 127.0.0.1 >/dev/null 2>&1 &
 }

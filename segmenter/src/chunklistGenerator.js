@@ -198,7 +198,7 @@ class chunklistGenerator {
         let chunks_to_create = 1;
         if (is_lhls) {
             if (is_first_chunk) {
-                chunks_to_create = this.lhls_advanced_chunks;
+                chunks_to_create = this.lhls_advanced_chunks ;
             }
         }
 
@@ -301,7 +301,7 @@ class chunklistGenerator {
             this.segmenter_data.bytes_next_sync = this.segmenter_data.bytes_next_sync - data.length;
 
             //Create ts packet buffet
-            this.segmenter_data.ts_packet.addDataWithPos(this.segmenter_data.curr_file_pos_byte, data);
+            this.segmenter_data.ts_packet.addDataWithPos(this.segmenter_data.curr_file_pos_byte -1, data);
         }
         else {
             let sync_index = this.segmenter_data.bytes_next_sync;

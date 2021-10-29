@@ -78,7 +78,7 @@ const server = net.createServer(function (socket) {
     target_dur_s,
     chunklist_type,
     def_live_window_size,
-    lhls_advanced_chunks
+    lhls_advanced_chunks-1
   );
 
   //Add chunk listener

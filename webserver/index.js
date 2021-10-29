@@ -8,7 +8,7 @@ const fs = require('fs');
 
 //Defaults
 const base_dir_default = __dirname;
-const port_default = 8080;
+const port_default = 5000;
 const host_default = '0.0.0.0';
 const headers_by_ext_default = path.join(base_dir_default, 'config', 'headers.json');
 const cors_default = path.join(base_dir_default, 'config', 'cors.json');

@@ -4,20 +4,20 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=UTC
 
 RUN apt-get update -qq && \
-    apt-get install -y --no-install-recommends ca-certificates varnish && \
+    apt-get install -y --no-install-recommends ca-certificates javascript-common git nodejs npm varnish && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
     apt-get -y clean && \
     rm -r /var/lib/apt/lists/*
 
-COPY webserver /opt/webserver
-RUN  cd /opt/webserver && npm install && cd ../..
+COPY webserver /webserver
+RUN  cd /webserver && npm install && cd ..
 
-COPY segmenter /opt/segmenter
-RUN  cd /opt/segmenter && npm install && cd ../..
+COPY segmenter /segmenter
+RUN  cd /segmenter && npm install && cd ..
 
 COPY varnish.vcl /etc/varnish/default.vcl
 
-COPY entrypoint.sh /root
+COPY root /root
 RUN chmod +x /root/entrypoint.sh
 
 # varnish port

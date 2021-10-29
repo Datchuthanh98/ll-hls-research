@@ -11,7 +11,7 @@ You can pipe mpegts output from ffmpeg to port `1234` in the above example and t
 For example on OS X you can run the following command to have ffmpeg stream video from the FaceTime camera (if one is present)
 
 ## cmd
-
+sudo su
 apt-get update -qq
 apt-get install -y --no-install-recommends ca-certificates varnish
 ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -21,11 +21,9 @@ cd Desktop/
 cd llhls/
 cp varnish.vcl /etc/varnish/default.vcl
 chmod +x entrypoint.sh
-cd segmenter/
-npm i
-cd ../webserver/
-npm i
-cd ..
+cd segmenter && npm i && cd ..
+cd webserver && npm i && cd ..
 bash entrypoint.sh
 
-ffmpeg -re -i beautiful_in_white_1080p.mp4 -c:v libx264 -preset veryfast -g 30 -keyint_min 30 -crf 25 -f mpegts tcp://localhost:1234
+ffmpeg -re -i thaylong1080p.mp4 -c:v libx264 -preset veryfast -g 30 -keyint_min 30 -crf 25 -f mpegts tcp://localhost:1234
+ffmpeg -re -i scy1080p.mp4 -c:v libx264 -preset veryfast -g 30 -keyint_min 30 -crf 25 -f mpegts tcp://localhost:1234
